@@ -42,10 +42,14 @@ class _MyAppState extends State<MyApp> {
       child:
           Consumer<DarkThemeProvider>(builder: (context, themeProvider, child) {
         return MaterialApp(
-            debugShowCheckedModeBanner: false,
-            title: 'Flutter Demo',
-            theme: Styles.themeData(themeProvider.getDarkTheme, context),
-            home: HomeScreen());
+          debugShowCheckedModeBanner: false,
+          title: 'Flutter Demo',
+          theme: Styles.themeData(themeProvider.getDarkTheme, context),
+          home: const HomeScreen(),
+          routes: {
+            HomeScreen.routeName: (context) => const HomeScreen(),
+          },
+        );
       }),
     );
   }

@@ -2,10 +2,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:newsapphttpfirebase/consts/const_variables.dart';
 import 'package:newsapphttpfirebase/providers/dark_theme_provider.dart';
 import 'package:newsapphttpfirebase/widgets/vertical_spacing.dart';
 import 'package:provider/provider.dart';
+
+import '../consts/vars.dart';
 
 class MainDrawer extends StatefulWidget {
   const MainDrawer({Key? key}) : super(key: key);
@@ -34,7 +35,10 @@ class _MainDrawerState extends State<MainDrawer> {
                     height: 70,
                     width: 70,
                   )),
-                  const VerticalSpacing(height: 20),
+                  VerticalSpacing(
+                    height: 20,
+                    child: Container(),
+                  ),
                   Flexible(
                     child: Text(
                       'News app',
@@ -45,7 +49,10 @@ class _MainDrawerState extends State<MainDrawer> {
                 ],
               ),
             ),
-            const VerticalSpacing(height: 20),
+            VerticalSpacing(
+              height: 20,
+              child: Container(),
+            ),
             DrawerListTiles(
               text: "Home",
               iconData: IconlyBold.home,
