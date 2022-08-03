@@ -2,8 +2,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:newsapphttpfirebase/inner_screens/bookmarks_screen.dart';
 import 'package:newsapphttpfirebase/providers/dark_theme_provider.dart';
+import 'package:newsapphttpfirebase/screens/home_page.dart';
 import 'package:newsapphttpfirebase/widgets/vertical_spacing.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 
 import '../consts/vars.dart';
@@ -56,12 +59,26 @@ class _MainDrawerState extends State<MainDrawer> {
             DrawerListTiles(
               text: "Home",
               iconData: IconlyBold.home,
-              fct: () {},
+              fct: () {
+                Navigator.of(context).push(
+                  PageTransition(
+                    child: const HomeScreen(),
+                    type: PageTransitionType.fade,
+                  ),
+                );
+              },
             ),
             DrawerListTiles(
               text: "Bookmark",
               iconData: IconlyBold.bookmark,
-              fct: () {},
+              fct: () {
+                Navigator.of(context).push(
+                  PageTransition(
+                    child: const BookmarksScreen(),
+                    type: PageTransitionType.fade,
+                  ),
+                );
+              },
             ),
             const Divider(
               thickness: 5,

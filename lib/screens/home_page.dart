@@ -1,14 +1,17 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import 'package:newsapphttpfirebase/consts/vars.dart';
+import 'package:newsapphttpfirebase/inner_screens/search_screen.dart';
+import 'package:newsapphttpfirebase/services/utils.dart';
 import 'package:newsapphttpfirebase/widgets/articles_widget.dart';
 import 'package:newsapphttpfirebase/widgets/horizontal_spacing.dart';
 import 'package:newsapphttpfirebase/widgets/loading_widget.dart';
 import 'package:newsapphttpfirebase/widgets/main_drawer.dart';
 import 'package:newsapphttpfirebase/widgets/vertical_spacing.dart';
+import 'package:page_transition/page_transition.dart';
 
 import '../widgets/pagination_buttons.dart';
 import '../widgets/screen_tabs.dart';
@@ -27,12 +30,20 @@ class _HomeScreenState extends State<HomeScreen> {
   String sortBy = SortByEnum.publishedAt.name;
   @override
   Widget build(BuildContext context) {
+    Size size = Utils(context: context).getScreenSize;
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
           actions: [
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).push(
+                  PageTransition(
+                    child: SearchScreen(),
+                    type: PageTransitionType.fade,
+                  ),
+                );
+              },
               icon: const Icon(
                 IconlyBold.search,
               ),
@@ -193,7 +204,28 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ),
-            LoadingWidget(),
+            if (newsType == NewsType.allNews)
+              Expanded(
+                child: ListView.builder(
+                  itemBuilder: (context, index) => ArticlesWidget(),
+                  itemCount: 20,
+                ),
+              ),
+            if (newsType == NewsType.topTrending)
+              SizedBox(
+                height: size.height * 0.6,
+                child: Swiper(
+                  autoplay: true,
+                  autoplayDelay: 8000,
+                  itemWidth: size.width * 0.9,
+                  layout: SwiperLayout.STACK,
+                  viewportFraction: 0.9,
+                  itemCount: 5,
+                  itemBuilder: (context, index) => LoadingWidget(
+                    newsType: NewsType.topTrending,
+                  ),
+                ),
+              ),
           ],
         ),
       ),
