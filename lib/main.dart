@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:newsapphttpfirebase/providers/dark_theme_provider.dart';
 import 'package:newsapphttpfirebase/screens/home_page.dart';
 import 'package:provider/provider.dart';
-
 import 'consts/theme_data.dart';
 
 void main() {
-  runApp(MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
-  MyApp({Key? key}) : super(key: key);
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   State<MyApp> createState() => _MyAppState();

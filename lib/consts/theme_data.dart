@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Styles {
   static ThemeData themeData(bool isDarkTheme, BuildContext context) {
     return ThemeData(
+      appBarTheme: AppBarTheme(
+        titleTextStyle: GoogleFonts.comicNeue()
+                          .copyWith(fontSize: 20, fontWeight: FontWeight.w800,color: isDarkTheme?Colors.white:Colors.black),
+          iconTheme:
+              IconThemeData(color: isDarkTheme ? Colors.white : Colors.black)),
       scaffoldBackgroundColor:
           //0A1931  // white yellow 0xFFFCF8EC
           isDarkTheme ? const Color(0xFF00001a) : const Color(0xFFFFFFFF),
-      primaryColor: Colors.blue,
+      primaryColor: isDarkTheme ? Colors.black : Colors.white,
       colorScheme: ThemeData().colorScheme.copyWith(
             secondary:
                 isDarkTheme ? const Color(0xFF1a1f3c) : const Color(0xFFE8FDFD),
