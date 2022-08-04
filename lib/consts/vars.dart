@@ -19,7 +19,8 @@ String articlePic =
 String pic404 =
     "https://scontent.fadb2-1.fna.fbcdn.net/v/t1.6435-9/140319041_1151557678629753_2291501919177660954_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=e3f864&_nc_ohc=0kicSVdOJIoAX_bctw2&tn=PwJU-z217FrMirem&_nc_ht=scontent.fadb2-1.fna&oh=00_AT-mlJ64veFj3d-C9mySnGkU6OKVRpWpKEZtFhKRLYib_Q&oe=630FAE7F";
 TextStyle smallText = GoogleFonts.montserrat(fontSize: 15);
-
+String errorPic =
+    "https://thumbs.dreamstime.com/b/error-message-creative-design-48389035.jpg";
 const List<String> searchKeywords = [
   "Football",
   "Flutter",

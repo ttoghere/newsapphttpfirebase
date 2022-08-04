@@ -1,7 +1,9 @@
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
+import 'package:newsapphttpfirebase/inner_screens/news_details_webview.dart';
 import 'package:newsapphttpfirebase/services/utils.dart';
 import 'package:newsapphttpfirebase/widgets/vertical_spacing.dart';
+import 'package:page_transition/page_transition.dart';
 
 import '../consts/vars.dart';
 
@@ -15,7 +17,12 @@ class ArticlesWidget extends StatelessWidget {
       child: Material(
         color: Theme.of(context).cardColor,
         child: InkWell(
-          onTap: () {},
+          onTap: () {
+            Navigator.of(context).push(PageTransition(
+                child: NewsDetailsWebView(),
+                type: PageTransitionType.rotate,
+                alignment: Alignment.center));
+          },
           child: Stack(
             children: [
               Container(
@@ -63,6 +70,7 @@ class ArticlesWidget extends StatelessWidget {
                         height: size.height * 0.12,
                         width: size.height * 0.12,
                         boxFit: BoxFit.fill,
+                        errorWidget: Image.network(errorPic),
                       ),
                     ),
                     const SizedBox(
@@ -74,7 +82,7 @@ class ArticlesWidget extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Text(
-                            "Title "*100,
+                            "Title " * 100,
                             style: smallText,
                             textAlign: TextAlign.justify,
                             maxLines: 2,
